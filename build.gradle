@@ -1,39 +1,53 @@
-plugins {
-    id 'java'
-    id 'org.springframework.boot' version '3.2.0-M2'
-    id 'io.spring.dependency-management' version '1.1.3'
-}
-
-group = 'com.example'
-version = '0.0.1-SNAPSHOT'
-
-java {
-    sourceCompatibility = '20'
-}
-
-configurations {
-    compileOnly {
-        extendsFrom annotationProcessor
+buildscript {
+    ext {
+        springBootVersion = '3.1.2'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+        classpath "io.spring.gradle:dependency-management-plugin:1.0.11.RELEASE"
     }
 }
 
-repositories {
-    mavenCentral()
-    maven { url 'https://repo.spring.io/milestone' }
+//bootJar.enabled = false
+
+subprojects {
+    group = 'info.h9'
+    version = '0.0.1'
+    //sourceCompatibility = '20'
+    //compileJava.options.encoding = 'UTF-8'
+
+    apply plugin: 'java'
+    apply plugin: 'java-library'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+    configurations {
+        compileOnly {
+            extendsFrom annotationProcessor
+        }
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+        implementation 'org.springframework.boot:spring-boot-starter-test:3.1.2'
+        implementation 'org.springframework.boot:spring-boot-test:3.1.2'
+        implementation 'org.springframework.boot:org.springframework.boot.gradle.plugin:3.1.2'
+
+        compileOnly 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok'
+
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    }
+    tasks.named('test') {
+        useJUnitPlatform()
+    }
+
 }
 
-dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:org.springframework.boot.gradle.plugin:3.1.2'
-    implementation 'org.springframework.boot:spring-boot-test:3.1.2'
-    implementation 'org.springframework.boot:spring-boot-starter-test:3.1.2'
-    compileOnly 'org.projectlombok:lombok'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    runtimeOnly 'org.postgresql:postgresql'
-    annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-}
-
-tasks.named('test') {
-    useJUnitPlatform()
-}
