@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:14-alpine
+    container_name: postgres-db
+    ports:
+      - "9876:5432"
+    volumes:
+      - .postgresql/:/var/lib/postgresql/data
+      - ./local-db/init_schema.sql:/docker-entrypoint-initdb.d/1-schema.sql
+
+    environment:
+      - POSTGRES_PASSWORD=admin1234
+      - POSTGRES_USER=admin
+      - POSTGRES_DB=jc
