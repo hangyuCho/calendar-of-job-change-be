@@ -1,7 +1,6 @@
 bootJar { enabled = false }
 jar { enabled = true }
 dependencies {
-
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'org.postgresql:postgresql'
     testImplementation platform('org.junit:junit-bom:5.9.1')
