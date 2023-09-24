@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("")
+@RequestMapping("/home")
 public class HomeController {
 
     private final HomeService homeService;
@@ -21,10 +21,10 @@ public class HomeController {
         this.homeService = homeService;
     }
 
-    @GetMapping("/")
+    @GetMapping("")
     public ResponseEntity<HomeResponse> index(
-        @Validated HomeRequest requestBody,
-        BindingResult result
+            @Validated HomeRequest requestBody,
+            BindingResult result
     ) {
         if (result.hasErrors()) {
             throw new IllegalArgumentException("Invalid parameters");
