@@ -14,8 +14,8 @@ import java.util.Map;
 @JsonNaming
 public class EventStatusResponse {
     public EventStatusResponse(EventStatusDto dto) {
-        this.result = dto.getEventStatusMap();
+        this.results = dto.getEventStatusMap();
     }
 
-    private Map<String, List<Event>> result;
+    private Map<String, List<Event>> results;
 }

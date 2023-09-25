@@ -12,8 +12,8 @@ import java.util.List;
 @JsonNaming
 public class EventResponse {
     public EventResponse(EventDto dto) {
-        this.result = dto.getEventList();
+        this.results = dto.getEventList();
     }
 
-    private List<Event> result;
+    private List<Event> results;
 }
