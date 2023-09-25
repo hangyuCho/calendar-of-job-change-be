@@ -2,13 +2,14 @@ package info.h9.domain.event;
 
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import info.h9.domain.client.company.ClientCompanyMaster;
-import jakarta.validation.constraints.NotNull;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.ToString;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.Serializable;
-import java.time.Instant;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +22,6 @@ import java.util.Map;
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 @ToString
 @JsonNaming
-public class EventDto implements Serializable {
-    List<Event> eventList;
+public class EventStatusDto implements Serializable {
+    Map<String, List<Event>> eventStatusMap;
 }
