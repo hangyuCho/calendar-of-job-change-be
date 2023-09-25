@@ -36,7 +36,7 @@ public class EventService implements BaseService {
                         .orElse(List.of(new Event()))
                         .stream()
                         .collect(Collectors.groupingBy(
-                                (bean -> bean.getClientCompany().getId() + ":" + bean.getClientCompany().getClientCompanyName())))
+                                (bean -> String.valueOf(bean.getAgentCompanyClientCompanyRelation().getClientCompanyMaster().getId()))))
                 ).build();
     }
 }

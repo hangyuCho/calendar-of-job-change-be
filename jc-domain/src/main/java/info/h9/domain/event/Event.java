@@ -1,5 +1,6 @@
 package info.h9.domain.event;
 
+import info.h9.domain.agent.company.AgentCompanyClientCompanyRelation;
 import info.h9.domain.client.company.ClientCompanyMaster;
 import info.h9.domain.job.change.process.JobChangeProcessMaster;
 import info.h9.domain.meeting.category.MeetingCategoryType;
@@ -9,6 +10,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.Instant;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -27,13 +29,19 @@ public class Event {
     @Column(name = "schedule_end_at")
     private Instant scheduleEndAt;
 
-    @OneToOne
-    @JoinColumn(name = "client_company_id")
-    private ClientCompanyMaster clientCompany;
+    //@Column(name = "client_company_id")
+    //private Long clientCompanyId;
+    //@OneToOne
+    //@JoinColumn(name = "client_company_id")
+    //private privateClientCompanyMaster clientCompany;
 
     @OneToOne
     @JoinColumn(name = "job_change_process_id")
     private JobChangeProcessMaster jobChangeProcess;
+
+    @OneToOne
+    @JoinColumn(name = "client_company_id")
+    private AgentCompanyClientCompanyRelation agentCompanyClientCompanyRelation;
 
     @Column(name = "meeting_link", length = Integer.MAX_VALUE)
     private String meetingLink;

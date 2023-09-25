@@ -1,5 +1,6 @@
 package info.h9.domain.client.company;
 
+import info.h9.domain.agent.company.AgentCompanyClientCompanyRelation;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -18,5 +19,6 @@ public class ClientCompanyMaster {
     @NotNull
     @Column(name = "client_company_name", nullable = false, length = Integer.MAX_VALUE)
     private String clientCompanyName;
+
 
 }
