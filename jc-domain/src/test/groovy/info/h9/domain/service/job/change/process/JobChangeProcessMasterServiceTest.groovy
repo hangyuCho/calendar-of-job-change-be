@@ -10,12 +10,13 @@ class JobChangeProcessMasterServiceTest extends BaseTest {
 
     def "getJobChangeProcessMasterList"() {
         given:
-        buildTestDate("setup/service/event/event.sql")
+        buildTestData("setup/service/event/event.sql")
 
         when:
         def result = jobChangeProcessMasterService.getJobChangeProcessMasterList()
 
         then:
         result != null
+
     }
 }
