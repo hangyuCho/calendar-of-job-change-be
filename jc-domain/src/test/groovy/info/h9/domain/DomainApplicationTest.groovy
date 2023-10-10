@@ -1,9 +1,11 @@
 package info.h9.domain
 
-import spock.lang.Specification
+import org.springframework.boot.SpringApplication
+import org.springframework.boot.autoconfigure.SpringBootApplication
 
-class DomainApplicationTest extends Specification {
-    def "Main"() {
-
+@SpringBootApplication
+class DomainApplicationTest {
+    static void main(String[] args) {
+        SpringApplication.run(DomainApplicationTest.class, args)
     }
 }

@@ -6,7 +6,6 @@ import info.h9.domain.repository.home.HomeRepository;
 import info.h9.domain.service.BaseService;
 import org.springframework.stereotype.Service;
 
-@Service
 public class HomeService implements BaseService {
 
     private final HomeRepository homeRepository;

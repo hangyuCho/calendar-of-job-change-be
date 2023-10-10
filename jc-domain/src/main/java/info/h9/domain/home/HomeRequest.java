@@ -17,12 +17,12 @@ import java.util.List;
 public class HomeRequest implements Serializable {
 
     @NotNull
-    String calendarId;
+    private String calendarId;
 
     public HomeDto toDto() {
         return HomeDto.builder()
-                        .calendarId(calendarId)
-                        .calendarList(List.of("hoge1"))
-                        .build();
+                .calendarId(calendarId)
+                .calendarList(List.of("hoge1"))
+                .build();
     }
 }
