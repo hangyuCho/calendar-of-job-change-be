@@ -3,11 +3,12 @@ package info.h9.domain.service.job.change.process;
 import info.h9.domain.job.change.process.JobChangeProcessMaster;
 import info.h9.domain.job.change.process.JobChangeProcessMasterDto;
 import info.h9.domain.repository.job.JobChangeProcessMasterRepository;
-import info.h9.domain.service.BaseService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public class JobChangeProcessMasterService implements BaseService {
+@Service
+public class JobChangeProcessMasterService {
 
     private final JobChangeProcessMasterRepository jobChangeProcessMasterRepository;
 

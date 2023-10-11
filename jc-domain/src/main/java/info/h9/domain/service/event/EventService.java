@@ -4,20 +4,18 @@ import info.h9.domain.event.Event;
 import info.h9.domain.event.EventDto;
 import info.h9.domain.event.EventStatusDto;
 import info.h9.domain.repository.event.EventRepository;
-import info.h9.domain.service.BaseService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class EventService implements BaseService {
+@Service
+public class EventService {
 
-    private final EventRepository eventRepository;
-
-    public EventService(EventRepository eventRepository) {
-        this.eventRepository = eventRepository;
-    }
+    @Autowired
+    EventRepository eventRepository;
 
     public EventDto getEventList() {
         return EventDto.builder()

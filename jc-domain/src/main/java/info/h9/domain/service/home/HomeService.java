@@ -3,10 +3,10 @@ package info.h9.domain.service.home;
 import info.h9.domain.home.Home;
 import info.h9.domain.home.HomeDto;
 import info.h9.domain.repository.home.HomeRepository;
-import info.h9.domain.service.BaseService;
 import org.springframework.stereotype.Service;
 
-public class HomeService implements BaseService {
+@Service
+public class HomeService {
 
     private final HomeRepository homeRepository;
 

@@ -1,17 +1,18 @@
 package info.h9.domain
 
 import jakarta.persistence.EntityManager
-import jakarta.persistence.PersistenceContext
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.test.autoconfigure.orm.jpa.AutoConfigureTestEntityManager
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.transaction.annotation.Transactional
 import spock.lang.Specification
 
 @SpringBootTest
+@AutoConfigureTestEntityManager
 @Transactional
 class BaseTest extends Specification {
 
-    @PersistenceContext
+    @Autowired
     EntityManager entityManager
 
     void buildTestData(String filePathBySql) {
