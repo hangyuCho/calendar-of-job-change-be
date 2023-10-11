@@ -38,3 +38,4 @@ out/
 
 .postgresql
 /lib/
+/qodana.yaml
