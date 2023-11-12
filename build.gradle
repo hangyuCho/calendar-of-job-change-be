@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '3.1.2'
+        springBootVersion = '3.1.4'
     }
     repositories {
         mavenCentral()
@@ -16,14 +16,16 @@ buildscript {
 subprojects {
     group = 'info.h9'
     version = '0.0.1'
-    //sourceCompatibility = '20'
-    //compileJava.options.encoding = 'UTF-8'
 
     apply plugin: 'java'
     apply plugin: 'java-library'
     apply plugin: 'groovy'
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
+
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+    compileJava.options.encoding = 'UTF-8'
 
     configurations {
         compileOnly {
@@ -40,6 +42,9 @@ subprojects {
         implementation 'org.springframework.boot:spring-boot-starter-test:3.1.2'
         implementation 'org.springframework.boot:spring-boot-test:3.1.2'
         implementation 'org.springframework.boot:org.springframework.boot.gradle.plugin:3.1.2'
+        implementation 'org.jetbrains:annotations:24.0.0'
+        implementation 'org.apache.commons:commons-lang3:3.12.0'
+
 
         runtimeOnly 'org.postgresql:postgresql'
         compileOnly 'org.projectlombok:lombok'

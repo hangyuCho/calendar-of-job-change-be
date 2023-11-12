@@ -18,7 +18,7 @@ import java.util.function.Function;
 public class JwtService {
 
     //https://www.save-editor.com/crypto/crypt_key_generator.html
-    private static final String SECRET_KEY = "C8626DF87B67704B4A4D2FA24974570B6D90D7FDEC387B3463798446DD0568AA";
+    private static final String SECRET_KEY = "8F83127C805AE7E081151D1E4735949A8A150B0716D1CF7F64B5624B41976996";
 
     public String generateToken(UserDetails userDetails) {
         return generateToken(new HashMap<>(), userDetails);
@@ -45,6 +45,19 @@ public class JwtService {
     public <CLAIMS_RESOLVER> CLAIMS_RESOLVER extractClaim(String token, Function<Claims, CLAIMS_RESOLVER> claimsResolver) {
         final Claims claims = extractAllClaims(token);
         return claimsResolver.apply(claims);
+    }
+
+    public boolean isTokenValid(String token, UserDetails userDetails) {
+        final String username = extractUsername(token);
+        return (username.equals(userDetails.getUsername())) && !isTokenExpired(token);
+    }
+
+    private boolean isTokenExpired(String token) {
+        return extractExpiration(token).before(new Date());
+    }
+
+    private Date extractExpiration(String token) {
+        return extractClaim(token, Claims::getExpiration);
     }
 
     private Claims extractAllClaims(String token) {
