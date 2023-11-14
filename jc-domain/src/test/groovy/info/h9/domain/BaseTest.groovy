@@ -12,7 +12,7 @@ import spock.lang.Specification
 @Transactional
 class BaseTest extends Specification {
 
-    @Autowired
+    //@Autowired
     EntityManager entityManager
 
     void buildTestData(String filePathBySql) {
